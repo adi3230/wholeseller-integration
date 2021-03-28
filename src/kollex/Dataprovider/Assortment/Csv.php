@@ -4,7 +4,8 @@
 namespace kollex\Dataprovider\Assortment;
 
 
-class Csv {
+class Csv
+{
     private $file;
 
     public function __construct($path) {

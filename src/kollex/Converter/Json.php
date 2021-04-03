@@ -1,10 +1,10 @@
 <?php
 
 
-namespace kollex\Dataprovider\Assortment;
+namespace kollex\Converter;
 
 
-class Json
+class Json implements ConverterInterface
 {
     private $file;
 
@@ -15,7 +15,7 @@ class Json
         $this->file = $path;
     }
 
-    public function convert()
+    public function convert(): array
     {
         $fileContent = file_get_contents($this->file);
 

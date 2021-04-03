@@ -3,11 +3,10 @@
 
 namespace kollex\Mapper;
 
-
 use Exception;
 use kollex\Dataprovider\Assortment\BaseProduct;
 
-class CsvMapper
+class CsvMapper implements MapperInterface
 {
     private $csvArray;
 

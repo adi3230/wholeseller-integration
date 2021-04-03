@@ -2,11 +2,13 @@
 
 require 'vendor/autoload.php';
 
-use kollex\Dataprovider\Assortment\Csv;
-use kollex\Dataprovider\Assortment\Json;
+use kollex\Converter\Csv;
+use kollex\Converter\Json;
+use kollex\Dataprovider\FileDataProvider;
+use kollex\Dataprovider\MapDataProvider;
 use kollex\Mapper\CsvMapper;
 use kollex\Mapper\JsonMapper;
-
+/*
 $csv = new Csv('data/wholesaler_a.csv');
 $csvMap = new CsvMapper($csv->convert());
 
@@ -23,5 +25,25 @@ echo "</pre>";
 echo "<pre>";
 echo "CSV Mapper";
 print_r($csvMap->map());
+echo "==============================";
+echo "</pre>";
+*/
+
+// $test = new FileDataProvider(new Csv('data/wholesaler_a.csv'));
+$jsonData = new FileDataProvider(new Json('data/wholesaler_b.json'));
+$mapJson = new MapDataProvider(new JsonMapper($jsonData->export()));
+
+$csvData = new FileDataProvider(new Csv('data/wholesaler_a.csv'));
+$mapCsv = new MapDataProvider(new CsvMapper($csvData->export()));
+
+echo "<pre>";
+echo "JSON Mapper";
+print_r($mapJson->display());
+echo "==============================";
+echo "</pre>";
+
+echo "<pre>";
+echo "Csv Mapper";
+print_r($mapCsv->display());
 echo "==============================";
 echo "</pre>";

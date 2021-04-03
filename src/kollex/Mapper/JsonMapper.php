@@ -3,11 +3,10 @@
 
 namespace kollex\Mapper;
 
-
 use Exception;
 use kollex\Dataprovider\Assortment\BaseProduct;
 
-class JsonMapper
+class JsonMapper implements MapperInterface
 {
     private $jsonArray;
 

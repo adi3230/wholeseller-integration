@@ -1,10 +1,10 @@
 <?php
 
 
-namespace kollex\Dataprovider\Assortment;
+namespace kollex\Converter;
 
 
-class Csv
+class Csv implements ConverterInterface
 {
     private $file;
 
@@ -12,7 +12,7 @@ class Csv
         $this->file = $this->openCsv($path);
     }
 
-    public function convert()
+    public function convert(): array
     {
         $assoc_array = array();
         $row = 0;

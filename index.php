@@ -4,10 +4,10 @@ require 'vendor/autoload.php';
 
 use kollex\Converter\Csv;
 use kollex\Converter\Json;
-use kollex\Dataprovider\FileDataProvider;
-use kollex\Dataprovider\MapDataProvider;
 use kollex\Mapper\CsvMapper;
 use kollex\Mapper\JsonMapper;
+use kollex\Service\ProductExportService;
+
 /*
 $csv = new Csv('data/wholesaler_a.csv');
 $csvMap = new CsvMapper($csv->convert());
@@ -30,6 +30,7 @@ echo "</pre>";
 */
 
 // $test = new FileDataProvider(new Csv('data/wholesaler_a.csv'));
+/*
 $jsonData = new FileDataProvider(new Json('data/wholesaler_b.json'));
 $mapJson = new MapDataProvider(new JsonMapper($jsonData->export()));
 
@@ -47,3 +48,22 @@ echo "Csv Mapper";
 print_r($mapCsv->display());
 echo "==============================";
 echo "</pre>";
+*/
+
+$serviceA = new ProductExportService(new Csv('data/wholesaler_a.csv'), new CsvMapper());
+$serviceB = new ProductExportService(new Json('data/wholesaler_b.json'), new JsonMapper());
+
+echo "==============================";
+echo "<pre>";
+echo "Display";
+print_r($serviceA->export());
+echo "==============================";
+echo "</pre>";
+
+echo "==============================";
+echo "<pre>";
+echo "Display";
+print_r($serviceB->export());
+echo "==============================";
+echo "</pre>";
+

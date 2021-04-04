@@ -8,14 +8,14 @@ use kollex\Dataprovider\Assortment\BaseProduct;
 
 class JsonMapper implements MapperInterface
 {
-    private $jsonArray;
+    private $data;
 
-    private $baseProductPackaging = array(
+    private array $baseProductPackaging = array(
         'bottle' => 'BO',
         'can' => 'CN'
     );
 
-    private $productPackaging = array(
+    private array $productPackaging = array(
         'bottle' => 'BO',
         'box' => 'BX',
         'case' => 'CA',
@@ -27,25 +27,27 @@ class JsonMapper implements MapperInterface
         'g' => 'GR'
     );
 
-    /**
-     * JsonMapper constructor.
-     * @param $jsonArray
-     */
-    public function __construct($jsonArray)
+    public function setData($data)
     {
-        $this->jsonArray = $jsonArray;
+        $this->data = $data;
+        return $this;
+    }
+
+    public function getData()
+    {
+        return $this->data;
     }
 
     public function map(): array
     {
         $mappedProduct = [];
 
-        if(empty($this->jsonArray))
+        if(empty($this->data))
         {
             throw new Exception('Please provide an array');
         }
 
-        foreach ($this->jsonArray['data'] as $wholesellerProduct)
+        foreach ($this->data['data'] as $wholesellerProduct)
         {
             $product = new BaseProduct();
             $product->setId($wholesellerProduct['PRODUCT_IDENTIFIER']);

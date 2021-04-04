@@ -8,7 +8,7 @@ use kollex\Dataprovider\Assortment\BaseProduct;
 
 class CsvMapper implements MapperInterface
 {
-    private $csvArray;
+    private $data;
 
     private $baseProductPackaging = array(
         'bottle' => 'BO',
@@ -27,25 +27,27 @@ class CsvMapper implements MapperInterface
         'g' => 'GR'
     );
 
-    /**
-     * CsvMapper constructor.
-     * @param $csvArray
-     */
-    public function __construct($csvArray)
+    public function setData($data)
     {
-        $this->csvArray = $csvArray;
+        $this->data = $data;
+        return $this;
+    }
+
+    public function getData()
+    {
+        return $this->data;
     }
 
     public function map(): array
     {
         $mappedProduct = [];
         // Remove first object
-        array_shift($this->csvArray);
-        if(empty($this->csvArray))
+        array_shift($this->data);
+        if(empty($this->data))
         {
             throw new Exception('Please provide an array!');
         }
-        foreach($this->csvArray as $wholesellerProduct)
+        foreach($this->data as $wholesellerProduct)
         {
             $product = new BaseProduct();
             $product->setId($wholesellerProduct[0]);

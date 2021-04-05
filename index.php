@@ -8,6 +8,23 @@ use kollex\Mapper\CsvMapper;
 use kollex\Mapper\JsonMapper;
 use kollex\Service\ProductExportService;
 
+$serviceA = new ProductExportService(new Csv('data/wholesaler_a.csv'), new CsvMapper());
+$serviceB = new ProductExportService(new Json('data/wholesaler_b.json'), new JsonMapper());
+
+echo "==============================";
+echo "<pre>";
+echo "CSV Display";
+print_r($serviceA->export());
+echo "==============================";
+echo "</pre>";
+
+echo "==============================";
+echo "<pre>";
+echo "JSON Display";
+print_r($serviceB->export());
+echo "==============================";
+echo "</pre>";
+
 /*
 $csv = new Csv('data/wholesaler_a.csv');
 $csvMap = new CsvMapper($csv->convert());
@@ -49,21 +66,3 @@ print_r($mapCsv->display());
 echo "==============================";
 echo "</pre>";
 */
-
-$serviceA = new ProductExportService(new Csv('data/wholesaler_a.csv'), new CsvMapper());
-$serviceB = new ProductExportService(new Json('data/wholesaler_b.json'), new JsonMapper());
-
-echo "==============================";
-echo "<pre>";
-echo "Display";
-print_r($serviceA->export());
-echo "==============================";
-echo "</pre>";
-
-echo "==============================";
-echo "<pre>";
-echo "Display";
-print_r($serviceB->export());
-echo "==============================";
-echo "</pre>";
-

@@ -52,9 +52,11 @@ class JsonMapper implements MapperInterface
             $product->setGtin($wholesellerProduct['EAN_CODE_GTIN']);
             $product->setManufacturer($wholesellerProduct['BRAND']);
             $product->setName($wholesellerProduct['NAME']);
-            $product->setPackaging($this->productPackaging[
+            $product->setPackaging(
+                $this->productPackaging[
                 strtolower(explode(' ', $wholesellerProduct['PACKAGE'])[0])
-            ]);
+                ]
+            );
             $product->setBaseProductPackaging($this->baseProductPackaging[strtolower($wholesellerProduct['VESSEL'])]);
             $product->setBaseProductUnit($this->productUnits['l']);
             $product->setBaseProductAmount(str_replace(',', '.', $wholesellerProduct['LITERS_PER_BOTTLE']));

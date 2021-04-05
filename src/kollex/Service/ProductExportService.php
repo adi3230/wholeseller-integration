@@ -10,6 +10,7 @@ class ProductExportService implements ProductExportServiceInterface
 
     /**
      * ProductExportService constructor.
+     *
      * @param object $source
      * @param object $mapper
      */

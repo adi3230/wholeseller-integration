@@ -3,7 +3,6 @@
 
 namespace kollex\Dataprovider;
 
-
 class FileDataProvider implements FileDataInterface
 {
     private $filePath;

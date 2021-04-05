@@ -21,6 +21,6 @@ class ProductExportService implements ProductExportServiceInterface
 
     public function export(): string
     {
-       return json_encode($this->mapper->setData($this->source->getProducts())->map(), JSON_PRETTY_PRINT);
+        return json_encode($this->mapper->setData($this->source->getProducts())->map(), JSON_PRETTY_PRINT);
     }
 }

@@ -9,7 +9,8 @@ class Csv implements DataProvider
 {
     private $file;
 
-    public function __construct($path) {
+    public function __construct($path)
+    {
         $this->file = $this->openCsv($path);
     }
 
@@ -42,5 +43,4 @@ class Csv implements DataProvider
     {
         return fgetcsv($this->file, 1000, ';');
     }
-
 }

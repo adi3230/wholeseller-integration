@@ -12,7 +12,8 @@ class Json implements DataProvider
     /**
      * Json constructor.
      */
-    public function __construct($path) {
+    public function __construct($path)
+    {
         $this->file = $path;
     }
 

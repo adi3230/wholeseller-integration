@@ -3,7 +3,6 @@
 
 namespace kollex\Dataprovider\Assortment;
 
-
 use JsonSerializable;
 
 interface Product extends JsonSerializable

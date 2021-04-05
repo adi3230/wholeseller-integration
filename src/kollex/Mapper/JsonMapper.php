@@ -27,13 +27,13 @@ class JsonMapper implements MapperInterface
         'g' => 'GR'
     );
 
-    public function setData($data)
+    public function setData($data): JsonMapper
     {
         $this->data = $data;
         return $this;
     }
 
-    public function getData()
+    public function getData(): JsonMapper
     {
         return $this->data;
     }
@@ -42,19 +42,19 @@ class JsonMapper implements MapperInterface
     {
         $mappedProduct = [];
 
-        if(empty($this->data))
-        {
+        if (empty($this->data)) {
             throw new Exception('Please provide an array');
         }
 
-        foreach ($this->data['data'] as $wholesellerProduct)
-        {
+        foreach ($this->data['data'] as $wholesellerProduct) {
             $product = new BaseProduct();
             $product->setId($wholesellerProduct['PRODUCT_IDENTIFIER']);
             $product->setGtin($wholesellerProduct['EAN_CODE_GTIN']);
             $product->setManufacturer($wholesellerProduct['BRAND']);
             $product->setName($wholesellerProduct['NAME']);
-            $product->setPackaging($this->productPackaging[strtolower(explode(' ', $wholesellerProduct['PACKAGE'])[0])]);
+            $product->setPackaging($this->productPackaging[
+                strtolower(explode(' ', $wholesellerProduct['PACKAGE'])[0])
+            ]);
             $product->setBaseProductPackaging($this->baseProductPackaging[strtolower($wholesellerProduct['VESSEL'])]);
             $product->setBaseProductUnit($this->productUnits['l']);
             $product->setBaseProductAmount(str_replace(',', '.', $wholesellerProduct['LITERS_PER_BOTTLE']));
@@ -65,5 +65,4 @@ class JsonMapper implements MapperInterface
 
         return $mappedProduct;
     }
-
 }

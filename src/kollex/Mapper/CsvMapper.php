@@ -27,13 +27,13 @@ class CsvMapper implements MapperInterface
         'g' => 'GR'
     );
 
-    public function setData($data)
+    public function setData($data): CsvMapper
     {
         $this->data = $data;
         return $this;
     }
 
-    public function getData()
+    public function getData(): CsvMapper
     {
         return $this->data;
     }
@@ -43,12 +43,10 @@ class CsvMapper implements MapperInterface
         $mappedProduct = [];
         // Remove first object
         array_shift($this->data);
-        if(empty($this->data))
-        {
+        if (empty($this->data)) {
             throw new Exception('Please provide an array!');
         }
-        foreach($this->data as $wholesellerProduct)
-        {
+        foreach ($this->data as $wholesellerProduct) {
             $product = new BaseProduct();
             $product->setId($wholesellerProduct[0]);
             $product->setGtin($wholesellerProduct[1]);
@@ -57,11 +55,10 @@ class CsvMapper implements MapperInterface
             $product->setPackaging($this->productPackaging[strtolower(explode(' ', $wholesellerProduct[5])[0])]);
             $product->setBaseProductPackaging($this->baseProductPackaging[strtolower($wholesellerProduct[7])]);
             $product->setBaseProductUnit($this->productUnits[substr($wholesellerProduct[8], -1)]);
-            $product->setBaseProductAmount(substr($wholesellerProduct[8], 0 , -1));
+            $product->setBaseProductAmount(substr($wholesellerProduct[8], 0, -1));
             if ($wholesellerProduct[5] == 'single') {
                 $product->setBaseProductQuantity(1);
-            }
-            else {
+            } else {
                 $product->setBaseProductQuantity(explode(' ', $wholesellerProduct[5])[1]);
             }
 

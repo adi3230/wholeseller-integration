@@ -3,7 +3,6 @@
 
 namespace kollex\Dataprovider\Assortment;
 
-
 interface DataProvider
 {
     /**

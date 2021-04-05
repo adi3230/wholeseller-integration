@@ -6,5 +6,5 @@ namespace kollex\Service;
 
 interface ProductExportServiceInterface
 {
-    public function export(): array;
+    public function export(): string;
 }

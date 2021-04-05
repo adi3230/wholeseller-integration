@@ -4,7 +4,9 @@
 namespace kollex\Dataprovider\Assortment;
 
 
-interface Product
+use JsonSerializable;
+
+interface Product extends JsonSerializable
 {
     public function setId(string $id);
     public function setGtin(string $gtin);

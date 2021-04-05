@@ -17,9 +17,9 @@ class BaseProduct implements Product
     private int $baseProductQuantity = 1;
 
 
-    public static function create(): self
+    public function jsonSerialize(): array
     {
-        return new self();
+        return get_object_vars($this);
     }
 
     /**

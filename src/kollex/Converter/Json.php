@@ -3,10 +3,11 @@
 
 namespace kollex\Converter;
 
+use kollex\Dataprovider\Assortment\DataProvider;
 
-class Json implements ConverterInterface
+class Json implements DataProvider
 {
-    private $file;
+    private string $file;
 
     /**
      * Json constructor.
@@ -15,7 +16,7 @@ class Json implements ConverterInterface
         $this->file = $path;
     }
 
-    public function convert(): array
+    public function getProducts(): array
     {
         $fileContent = file_get_contents($this->file);
 

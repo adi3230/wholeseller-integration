@@ -10,6 +10,8 @@ class ProductExportService implements ProductExportServiceInterface
 
     /**
      * ProductExportService constructor.
+     * @param $source
+     * @param $mapper
      */
     public function __construct($source, $mapper)
     {
@@ -17,8 +19,8 @@ class ProductExportService implements ProductExportServiceInterface
         $this->mapper = $mapper;
     }
 
-    public function export(): array
+    public function export(): string
     {
-       return $this->mapper->setData($this->source->convert())->map();
+       return json_encode($this->mapper->setData($this->source->getProducts())->map(), JSON_PRETTY_PRINT);
     }
 }

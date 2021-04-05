@@ -10,19 +10,19 @@ class CsvMapper implements MapperInterface
 {
     private $data;
 
-    private $baseProductPackaging = array(
+    private array $baseProductPackaging = array(
         'bottle' => 'BO',
         'can' => 'CN'
     );
 
-    private $productPackaging = array(
+    private array $productPackaging = array(
         'bottle' => 'BO',
         'box' => 'BX',
         'case' => 'CA',
         'single' => 'BO'
     );
 
-    private $productUnits = array(
+    private array $productUnits = array(
         'l' => 'LT',
         'g' => 'GR'
     );

@@ -10,10 +10,10 @@ class ProductExportService implements ProductExportServiceInterface
 
     /**
      * ProductExportService constructor.
-     * @param $source
-     * @param $mapper
+     * @param object $source
+     * @param object $mapper
      */
-    public function __construct($source, $mapper)
+    public function __construct(object $source, object $mapper)
     {
         $this->source = $source;
         $this->mapper = $mapper;

@@ -3,7 +3,6 @@
 
 namespace kollex\Dataprovider\Assortment;
 
-
 class BaseProduct implements Product
 {
     private string $id = '';
